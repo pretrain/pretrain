@@ -52,6 +52,8 @@ class LightGCN(torch.nn.Module):
         all_emb = torch.cat(
             (self.user_embedding.weight, self.item_embedding.weight), dim=0
         )
+        all_emb = all_emb.to(torch.float32)
+        norm_adj = norm_adj.to(torch.float32)
         embs = [all_emb]
         norm_adj = norm_adj.coalesce()
         norm_adj = norm_adj.to(self.device)

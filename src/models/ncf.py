@@ -62,6 +62,7 @@ class NeuMF(torch.nn.Module):
             mlp_vector = torch.nn.ReLU()(mlp_vector)
 
         vector = torch.cat([mlp_vector, mf_vector], dim=-1)
+        vector = vector.to(torch.float32)
         logits = self.affine_output(vector)
         rating = self.logistic(logits)
         return rating

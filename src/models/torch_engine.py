@@ -102,5 +102,5 @@ class Engine(object):
         """
         # Calculate Binary Cross Entropy loss
         criterion = torch.nn.BCELoss()
-        loss = criterion(scores, ratings)
+        loss = criterion(scores, ratings.to(torch.float64))
         return loss

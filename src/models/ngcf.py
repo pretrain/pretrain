@@ -55,9 +55,11 @@ class NGCF(torch.nn.Module):
         ego_embeddings = torch.cat(
             (self.user_embedding.weight, self.item_embedding.weight), dim=0
         )
+        ego_embeddings = ego_embeddings.to(torch.float32)
         all_embeddings = [ego_embeddings]
 
         norm_adj = norm_adj.to(self.device)
+        norm_adj = norm_adj.to(torch.float32)
         for i in range(self.n_layers):
             side_embeddings = sparse.mm(norm_adj, ego_embeddings)
             sum_embeddings = F.leaky_relu(self.GC_weights[i](side_embeddings))

@@ -24,3 +24,5 @@ py7zr~=0.6
 flake8-black==0.1.2
 gensim==3.8.3
 ray~=0.8.4
+numpy==1.18.1
+pytrec_eval==0.5

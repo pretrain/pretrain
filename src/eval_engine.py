@@ -422,6 +422,8 @@ class EvalEngine(object):
             "optimizer",
             "item_fea_type",
             "max_epoch",
+            "lambda_A",
+            "lambda_R"
         ]
 
         for opt in other_opts:

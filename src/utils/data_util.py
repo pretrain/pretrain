@@ -431,11 +431,13 @@ class Dataset(object):
         df[DEFAULT_USER_COL] = df[DEFAULT_USER_COL].apply(lambda x: self.user2id[x])
         df[DEFAULT_ITEM_COL] = df[DEFAULT_ITEM_COL].apply(lambda x: self.item2id[x])
 
+
         # If implicit feedback, set rating as 1.0 or 0.0
         if implicit:
             df[DEFAULT_RATING_COL] = df[DEFAULT_RATING_COL].apply(
                 lambda x: float(x > 0)
             )
+        df[DEFAULT_RATING_COL] = df[DEFAULT_RATING_COL].astype(np.float64)
         return df
 
     def init_item_fea(self):
