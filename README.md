@@ -1,9 +1,10 @@
-# Enhancing Recommendation Systems with Multi-Graph Pre-Training
-> Codes for the submission: Enhancing Recommendation Systems with Multi-Graph Pre-Training
+# Graph Neural Pre-training for Recommendation with Side Information
+> Codes for our paper: [Graph Neural Pre-training for Recommendation with Side Information](https://dl.acm.org/doi/abs/10.1145/3568953)
 
 ## Introduction
 
-Leveraging the side information associated with entities (i.e. users and items) to enhance recommendation systems has been widely recognized as an essential modeling dimension. Most of the existing approaches address this task by the integration-based scheme, which incorporate the entity side information by combining the recommendation objective with an extra side information-aware objective. Despite of the growing progress made by the existing integration-based approaches, they are largely limited by the potential conflicts between the two objectives. Moreover, the heterogeneous side information among entities is still under-explored in these systems. In this paper, we propose a novel pre-training scheme to leverage the entity side information by pre-training entity embeddings using the multi-graph neural network. Instead of jointly training with two objectives, our pre-training scheme first pre-trains two representation models under the entity multi-graphs constructed by their side information, and then fine-tunes their embeddings under an existing general representation-based recommendation model. Our proposed multi-graph neural network can generate within-entity knowledge- encapsulated embeddings, while capturing the heterogeneity from the entity side information simultaneously, thereby improving the performance of the underlying recommendation model. An extensive evaluation of our pre-training scheme fine-tuned under four general representation-based recommender models, namely, MF, NCF, NGCF and LightGCN, shows that effectively pre-training embeddings with both the user’s and item’s side information can significantly improve these original models in terms of both effectiveness and stability.
+Leveraging the side information associated with entities (i.e. users and items) to enhance recommendation systems has been widely recognized as an essential modeling dimension. Most of the existing approaches address this task by the integration-based scheme, which incorporate the entity side information by combining the recommendation objective with an extra side information-aware objective. Despite of the growing progress made by the existing integration-based approaches, they are largely limited by the potential conflicts between the two objectives. Moreover, the heterogeneous side information among entities is still under-explored in these systems. In this paper, we propose a novel pre-training scheme to leverage the entity side information by pre-training entity embeddings using the multi-graph neural network. Instead of jointly training with two objectives, our pre-training scheme first pre-trains two representation models under the entity multi/single relational graphs constructed by their side information, and then fine-tunes their embeddings under an existing general representation-based recommendation model. Our proposed multi-graph and single-graph neural networks can generate within-entity knowledge-encapsulated embeddings, while capturing the heterogeneity from the entity side information simultaneously, thereby improving the performance of the underlying recommendation model. An extensive evaluation of our pre-training scheme fine-tuned under four general representation-based recommender models, namely, MF, NCF, NGCF and LightGCN, shows that effectively pre-training embeddings with both the user’s and item’s side information can significantly improve these original models in terms of both effectiveness and stability.
+
 
 ![img](./figs/figure_2.jpg)
 
@@ -48,17 +49,29 @@ python train_ngcf.py
 If you want to change training configurations, such as the used dataset and the range of hyper-paramters, you can change the default NGCF configuration file or create a new one.
 
 ### Pre-training models
-* GCN-P:[train_gcn.py](./examles/train_gcn.py), which is built based on [GCN](https://arxiv.org/pdf/1609.02907.pdf)
-* Multi-P:[train_multi.py](./examles/train_multi.py), which is built based on [Compositional-GCN](https://arxiv.org/pdf/1911.03082.pdf)
+* GCN-P:[train_gcn.py](./examples/train_gcn.py), which is built based on [GCN](https://arxiv.org/pdf/1609.02907.pdf)
+* Multi-P:[train_multi.py](./examples/train_multi.py), which is built based on [Compositional-GCN](https://arxiv.org/pdf/1911.03082.pdf)
 
 ### Fine-tuning models/baselines
-* [MF](https://arxiv.org/pdf/2005.09683.pdf): [train_mf.py](./examles/train_mf.py)
-* [NGCF](https://arxiv.org/pdf/1905.08108.pdf): [train_ngcf.py](./examles/train_ngcf.py)
-* [LightGCN](https://arxiv.org/pdf/2002.02126.pdf): [train_lightgcn.py](./examles/train_lightgcn.py)
-* [NCF](https://arxiv.org/pdf/1708.05031.pdf): [train_ncf.py](./examles/train_ncf.py)
+* [MF](https://arxiv.org/pdf/2005.09683.pdf): [train_mf.py](./examples/train_mf.py)
+* [NGCF](https://arxiv.org/pdf/1905.08108.pdf): [train_ngcf.py](./examples/train_ngcf.py)
+* [LightGCN](https://arxiv.org/pdf/2002.02126.pdf): [train_lightgcn.py](./examples/train_lightgcn.py)
+* [NCF](https://arxiv.org/pdf/1708.05031.pdf): [train_ncf.py](./examples/train_ncf.py)
 
 To try new datasets, you can ceate a new dataset script in beta-rec/datasets by referring to how the movielens dataset is dealt with.
 To define a new model, you can ceate a new model script in beta-rec/models by referring to how the NGCF model is defined.
+
+****
+If you find our paper and resources useful, please kindly leave a star and cite our papers. Thanks!
+
+```bibtex
+@article{liu2022graph,
+  title={Graph Neural Pre-training for Recommendation with Side Information},
+  author={Liu, Siwei and Meng, Zaiqiao and Macdonald, Craig and Ounis, Iadh},
+  journal={ACM Transactions on Information Systems},
+  publisher={ACM New York, NY}
+}
+```
 
 
 If you have any issue about the reproducibility of this work, please feel free to raise your issues with an anonymous user, we will reply them as soon as possible.
