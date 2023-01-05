@@ -31,7 +31,7 @@ python train_compgcn_mf.py --dataset ml_100k --lr 0.005 --emb_dim 64 --late_dim 
 ```
 where the configurations can be set via [gnn_mf_default.json](./configs/gnn_mf_default.json).
 
-To pretrain a new weights with our COM-P (or GCN-P), you can go to the [example](./example) folder, and run:
+To pretrain a new weights with our COM-P (or GCN-P), you can go to the [example](https://github.com/pretrain/pretrain/tree/main/examples) folder, and run:
 
 ```python
 python train_compgcn.py
