@@ -12,6 +12,8 @@ An overview of our graph neural pre-training scheme. Our pre-training model cons
 
 ## Requirements
 
+This code is built based on the [Beta-RecSys](https://github.com/beta-team/beta-recsys) framework. And it will be merged into [Beta-RecSys](https://github.com/beta-team/beta-recsys) soon.
+
 To install the required packages, please run:
 
 ``` python
